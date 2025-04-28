@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Investment Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Galdeano&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Investment Dashboard</h1>
+    <div id="dashboard"></div>
+  </div>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem('user'));
+    const profile = JSON.parse(localStorage.getItem('profile'));
+
+    if (user && profile) {
+      document.getElementById('dashboard').innerHTML = `
+        <div class="card">
+          <h2>${user.firstName} ${user.lastName}</h2>
+          <p><strong>Age:</strong> ${profile.age}</p>
+          <p><strong>Total Savings:</strong> $${profile.totalSavings}</p>
+          <p><strong>Stocks:</strong> $${profile.stocks}</p>
+          <p><strong>401k/IRA:</strong> $${profile.retirement}</p>
+          <p><strong>Savings Account:</strong> $${profile.savingsAccount}</p>
+          <p><strong>Risk Profile:</strong> ${profile.riskProfile}</p>
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>

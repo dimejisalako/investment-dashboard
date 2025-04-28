@@ -41,3 +41,17 @@ document.getElementById('signupForm').addEventListener('submit', function(event)
 
   alert("Signup successful! User info saved.");
 });
+function toggleDarkMode() {
+    const body = document.body;
+    const button = document.getElementById('darkModeBtn');
+  
+    if (body.classList.contains('dark-mode')) {
+      body.classList.remove('dark-mode');
+      button.textContent = 'Dark Mode: OFF';
+    } else {
+      body.classList.add('dark-mode');
+      button.textContent = 'Dark Mode: ON';
+    }
+  }
+  
+  

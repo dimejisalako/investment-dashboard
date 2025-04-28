@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Investment Profile Form</title>
+  <link rel="stylesheet" href="app.css">
+  <link href="https://fonts.googleapis.com/css2?family=Galdeano&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <h1 id="welcomeText"></h1>
+    <p>Let's get some of your information to build your investment profile.</p>
+
+    <form id="profileForm">
+      <input type="number" id="age" placeholder="Your Age" required><br><br>
+      <input type="number" id="totalSavings" placeholder="Total Savings ($)" required><br><br>
+
+      <h3>Breakdown of Savings:</h3>
+      <input type="number" id="stocks" placeholder="Stocks ($)" required><br><br>
+      <input type="number" id="retirement" placeholder="401k/IRA ($)" required><br><br>
+      <input type="number" id="savingsAccount" placeholder="Savings Account ($)" required><br><br>
+
+      <h3>Risk Profile:</h3>
+      <select id="riskProfile" required>
+        <option value="">--Select Risk--</option>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select><br><br>
+
+      <button type="submit" class="submit-btn">Submit Profile</button>
+    </form>
+  </div>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if (user) {
+      document.getElementById('welcomeText').textContent = `Welcome ${user.firstName},`;
+    }
+
+    document.getElementById('profileForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const profile = {
+        age: document.getElementById('age').value,
+        totalSavings: document.getElementById('totalSavings').value,
+        stocks: document.getElementById('stocks').value,
+        retirement: document.getElementById('retirement').value,
+        savingsAccount: document.getElementById('savingsAccount').value,
+        riskProfile: document.getElementById('riskProfile').value
+      };
+
+      localStorage.setItem('profile', JSON.stringify(profile));
+
+      window.location.href = "index3.html";
+    });
+  </script>
+
+</body>
+</html>
